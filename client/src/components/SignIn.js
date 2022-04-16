@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import styled from "styled-components";
+
 import {
     Container,
     FormLabel,
@@ -7,7 +9,13 @@ import {
     FormControl,
     Input,
     Heading,
+    Text ,
+    Link
 } from "@chakra-ui/react";
+
+const ContainerWithBoxShadow = styled(Container)`
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+`
 
 const SignIn = () => {
     const [userCredentials, setUserCredentials] = useState({
@@ -22,7 +30,7 @@ const SignIn = () => {
     };
 
     return (
-        <Container width="md" mt="100">
+        <ContainerWithBoxShadow width="md" mt="3rem" p='10' rounded='md' bg='white' >
             <Heading fontSize={40}>sing in</Heading>
 
             <FormControl isRequired mt="50">
@@ -47,10 +55,17 @@ const SignIn = () => {
                 />
             </FormControl>
 
+            <Container >
+                <Text mt="2rem" textAlign='center'> Not a reddittor ? {' '}
+                    <Link color='teal.500' href='#'>
+                        Create account
+                    </Link>
+                </Text>
+            </Container>
             <Button type="submit" mt="10" color="white" bg="redditOrange.300" _hover={{bg: "redditOrange.100"}}>
                 login
             </Button>
-        </Container>
+        </ContainerWithBoxShadow>
     );
 };
 

@@ -17,6 +17,14 @@ input{
   border-radius:.3em;
   background-color:#DAE0E6;
   border:none;
+  &:hover , &:focus{
+    outline-color : lightblue ;
+    border : none ;
+  }
+}
+
+input {
+  padding-left: 2rem ;
 }
 
 svg{
