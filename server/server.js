@@ -10,7 +10,7 @@ app.use(express.json());
 import postsRouter from './routes/postsRoutes.js'
 //import authRouter from './routes/authRoutes.js'
 //app.use('/api/v1/auth',authRouter);
-app.use('api/v1/posts',postsRouter)
+app.use('/api/v1/posts',postsRouter)
 
 import connectDB from './db/connect.js';
 const start = async () => {

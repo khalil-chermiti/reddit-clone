@@ -3,7 +3,8 @@ import mongoose from 'mongoose'
 const postSchema = new mongoose.Schema({
     createdBy:{
         type:String,
-        required:true
+        required:true,
+        default:"anonymous"
     },
     upvotes:{
         type:Number,
