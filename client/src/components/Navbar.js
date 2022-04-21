@@ -1,4 +1,5 @@
 import React from 'react'
+import {useNavigate} from 'react-router-dom'
 import styled from "styled-components";
 import { Button, LightButton } from "./Button";
 import {ReactComponent as RedditLogo} from '../assets/logo.svg'
@@ -35,13 +36,20 @@ svg{
 `
 
 const Navbar = () => {
+
+
+  const navigate = useNavigate();
+    const handleClick =()=>{
+        navigate('/signin');
+    }
+
   return (
     <Wrapper>
        <RedditLogo/>
        <input type="text" placeholder="Reddit Search..." />
        <div>
 
-       <LightButton>Log In</LightButton>
+       <LightButton onClick={handleClick}>Log In</LightButton>
        <Button>Sign Up</Button> 
        </div>
       

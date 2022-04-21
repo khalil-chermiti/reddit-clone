@@ -12,6 +12,7 @@ import {
     Text ,
     Link
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 const ContainerWithBoxShadow = styled(Container)`
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
@@ -22,6 +23,8 @@ const SignIn = () => {
         email: "",
         password: "",
     });
+
+    
 
     const handleChange = e => {
         const name = e.target.name;
@@ -54,8 +57,7 @@ const SignIn = () => {
                     onChange={handleChange}
                 />
             </FormControl>
-
-            <Container >
+            <Container>
                 <Text mt="2rem" textAlign='center'> Not a reddittor ? {' '}
                     <Link color='teal.500' href='#'>
                         Create account
