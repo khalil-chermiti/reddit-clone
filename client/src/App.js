@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import {Routes , Route} from 'react-router-dom' ;
 
-import {useDispatch, useSelector} from 'react-redux';
-import { selectCurrentUser, userSignIn } from './redux/user/userSlice';
+import {useDispatch} from 'react-redux';
+import { userSignIn } from './redux/user/userSlice';
+
+import { getPosts } from './redux/posts/postsSlice';
 
 import HomePage from './pages/Homepage';
 import SignIn from './components/SignIn';
@@ -11,15 +13,14 @@ import './App.css';
 import Navbar from './components/Navbar';
 
 function App() {
-  const user = useSelector(selectCurrentUser);
   const dispatch = useDispatch();
   
   // TODO : CHECK USER SESSION 
   useEffect(()=>{
     dispatch(userSignIn());
-  } , []);
+    dispatch(getPosts());
+  } , [dispatch]);
 
-  console.log(user);
   return (
     <div className="App">
       <Navbar/>

@@ -26,7 +26,7 @@ const theme = extendTheme({
   },
   fonts: {
     heading: 'VAG Rounded Next' ,
-    body: 'VAG Rounded Next',
+    body: 'Noto Sans',
   },
 }) ;
 
