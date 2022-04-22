@@ -1,7 +1,7 @@
 import {takeLatest , all ,  call , put } from 'redux-saga/effects' ;
 import { getPostsError , getPostsSuccess } from './postsSlice';
 
-const API_URL = "http://localhost:5000/api/v1/post" ;
+const API_URL = "http://localhost:5000/api/v1/posts" ;
 
 function* fetchPosts () {
     try {

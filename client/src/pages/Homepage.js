@@ -10,7 +10,7 @@ const HomePage = () => {
     const posts = useSelector(selectPosts);
     return <div>
         {/* {user ? `hello ${user.name}`  : "hello visiter"} */}
-        {posts.length ? posts.map(post => <p>{post.title}</p>) : "no posts yet"}
+        {posts.length ? posts.map(post => <Post {...post} />) : "no posts yet"}
     </div>;   
 };
 

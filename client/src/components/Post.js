@@ -67,25 +67,27 @@ const Comment = styled(Button)`
 
 
 //post component
-const Post = () => {
+const Post = (props) => {
+    const {upvotes,downvotes,title,community,comments,createdBy} = props;
   return (
     <Wrapper>
         <Votes>
             <Button><Upvote /></Button>
-                <span>126</span>
+                <span>{upvotes - downvotes}</span>
             <Button><Downvote/></Button>
         </Votes>
         <Content>
             {/* // TODO: fetch community and the user from the API
             //dummy values */}
-            <h3 style={{fontSize:"12px",fontWeight:"bold"}}>r/FunnyAnimals<span style={{fontWeight:"normal",color:"grey"}}> posted by u/waelsta</span></h3>
-            <h3>this is a dummy title</h3>
+            <h3 style={{fontSize:"12px",fontWeight:"bold"}}>
+                {community}<span style={{fontWeight:"normal",color:"grey"}}> posted by u/{createdBy}</span></h3>
+            <h3>{title}</h3>
             <p>this is the post content which could be a long or a short text as well as
                 pictures and videos 
             </p>
         <Comment>
             <Comments/>
-            <p>Comments</p>
+            <p>{comments.length} Comments</p>
             
         </Comment>
         </Content>
