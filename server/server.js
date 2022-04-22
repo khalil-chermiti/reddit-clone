@@ -1,9 +1,12 @@
-import express, { json } from 'express'
+import express from 'express'
+import cors from 'cors' ;
 const app = express();
 
 import dotenv from 'dotenv'
 dotenv.config();
 const  PORT = process.env.PORT || 5000;
+
+app.use(cors({origin : "http://localhost:3000"}));
 app.use(express.json());
 
 //routers

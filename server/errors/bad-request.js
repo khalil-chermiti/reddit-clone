@@ -8,4 +8,4 @@ class BadRequestError extends CustomAPIError {
   }
 }
 
-export default BadRequestError
+export default BadRequestError;

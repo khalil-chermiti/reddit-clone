@@ -1,7 +1,8 @@
-import mongoose from 'mongoose';
 import StatusCodes from 'http-status-codes';
 import Posts from '../models/postsModel.js'
-import {BadRequestError,NotFoundError} from '../errors/bad-request.js';
+import BadRequestError from '../errors/bad-request.js';
+import NotFoundError from '../errors/not-found.js';
+
 const getAllPosts = async(req,res)=>{
     try {
         const posts = await Posts.find({});
