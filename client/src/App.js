@@ -11,7 +11,7 @@ import SignIn from './components/SignIn';
 
 import './App.css';
 import Navbar from './components/Navbar';
-
+import CreatePostIndex from './components/CreatePostIndex';
 function App() {
   const dispatch = useDispatch();
   
@@ -27,6 +27,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage/>}/>
         <Route path='/signin' element={<SignIn/>}/>
+        <Route path='/posts/create' element={<CreatePostIndex/>}/>
       </Routes>
     </div>
   );

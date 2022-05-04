@@ -6,10 +6,10 @@ import {ReactComponent as Comments} from '../assets/comments.svg'
 
 //post container
 const Wrapper = styled.div`
-    width:45%;
+    width:100%;
     background-color:#FFFFFF;
     display:flex;
-    margin: 100px auto ;
+    margin: 10px auto ;
     height:fit-content;
 
 `
