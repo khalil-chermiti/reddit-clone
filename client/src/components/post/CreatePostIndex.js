@@ -1,6 +1,9 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Button } from '../Button'
 import styled from 'styled-components'
+import { addPost } from '../../redux/posts/postsSlice'
+import {useDispatch} from 'react-redux'
+
 const Wrapper = styled.div`
     width:50%;
     margin:50px auto;
@@ -17,7 +20,7 @@ const Wrapper = styled.div`
     }
 
 `
-const PostContainer = styled.form`
+const PostContainer = styled.div`
   width:100%;
   display:flex;
   background-color:white;
@@ -45,18 +48,32 @@ const PostContainer = styled.form`
 
 
 const CreatePostIndex = () => {
+  const dispatch = useDispatch();
+  const [content,setContent] = useState('');
+  const [title,setTitle] = useState('');
+  const [community,setCommunity] = useState('');
 
   return (
     <Wrapper>
         <h3>Create a post</h3>
-        <select>
+        <select onChange={(e)=>{
+          setCommunity(e.target.value)
+        }}>
           <option>r/Community</option> 
           <option>r/Spotify</option>
         </select>
         <PostContainer>
-          <input type='text' placeholder='Title' max={300}/>
-          <textarea/>
-          <Button type='submit'>Post</Button>
+          <input type='text' placeholder='Title' max={300}
+          onChange={(e)=>{
+          setTitle(e.target.value)
+        }}/>
+          <textarea onChange={(e)=>{
+          setContent(e.target.value)
+        }}/>
+          <Button type='submit'
+          onClick={()=>{
+            dispatch(addPost({title,content,community}))
+          }}>Post</Button>
         </PostContainer>
     </Wrapper>
   )

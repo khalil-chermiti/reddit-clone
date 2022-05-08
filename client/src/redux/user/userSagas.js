@@ -3,7 +3,6 @@ import {all , put , call , takeLatest} from 'redux-saga/effects' ;
 import {userSignInSuccess , userSignInError} from './userSlice';
 
 function* userSignIn({payload}) {
-    // console.log(payload) ;
     try {
         const data = yield call(()=> fetch("https://jsonplaceholder.typicode.com/users/1/"));
         const user = yield data.json() ;

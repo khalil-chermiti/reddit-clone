@@ -68,7 +68,7 @@ const Comment = styled(Button)`
 
 //post component
 const Post = (props) => {
-    const {upvotes,downvotes,title,community,comments,createdBy} = props;
+    const {upvotes,downvotes,title,community,comments,createdBy,content} = props;
   return (
     <Wrapper>
         <Votes>
@@ -82,8 +82,7 @@ const Post = (props) => {
             <h3 style={{fontSize:"12px",fontWeight:"bold"}}>
                 {community}<span style={{fontWeight:"normal",color:"grey"}}> posted by u/{createdBy}</span></h3>
             <h3>{title}</h3>
-            <p>this is the post content which could be a long or a short text as well as
-                pictures and videos 
+            <p>{content} 
             </p>
         <Comment>
             <Comments/>
