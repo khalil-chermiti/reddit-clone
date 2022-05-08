@@ -11,7 +11,7 @@ import SignIn from './components/SignIn';
 
 import './App.css';
 import Navbar from './components/Navbar';
-import CreatePostIndex from './components/CreatePostIndex';
+import CreatePostIndex from './components/post/CreatePostIndex';
 function App() {
   const dispatch = useDispatch();
   

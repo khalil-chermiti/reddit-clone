@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-import {ReactComponent as UserIcon} from '../assets/user-account.svg'
+import {ReactComponent as UserIcon} from '../../assets/user-account.svg'
 
 const Wrapper = styled.div`
     width:100%;

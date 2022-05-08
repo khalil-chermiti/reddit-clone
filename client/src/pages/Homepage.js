@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../redux/user/userSlice";
 import { selectPosts } from "../redux/posts/postsSlice";
-import CreatePost from '../components/CreatePost'
-import Post from '../components/Post'
+import CreatePost from '../components/post/CreatePost'
+import Post from '../components/post/Post'
 
 const Wrapper = styled.div`
     width:45%;

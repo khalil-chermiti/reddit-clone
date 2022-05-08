@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from './Button'
+import { Button } from '../Button'
 import styled from 'styled-components'
 const Wrapper = styled.div`
     width:50%;
@@ -17,7 +17,7 @@ const Wrapper = styled.div`
     }
 
 `
-const PostContainer = styled.div`
+const PostContainer = styled.form`
   width:100%;
   display:flex;
   background-color:white;
@@ -45,22 +45,21 @@ const PostContainer = styled.div`
 
 
 const CreatePostIndex = () => {
+
   return (
     <Wrapper>
         <h3>Create a post</h3>
         <select>
-          <option>r/Community</option>
+          <option>r/Community</option> 
           <option>r/Spotify</option>
         </select>
         <PostContainer>
-          <input type='text' placeholder='Title' max={300} />
-          <textarea />
-          <Button onClick={()=>{
-            
-          }}>Post</Button>
+          <input type='text' placeholder='Title' max={300}/>
+          <textarea/>
+          <Button type='submit'>Post</Button>
         </PostContainer>
     </Wrapper>
   )
 }
 
-export default CreatePostIndex
+export default CreatePostIndex 

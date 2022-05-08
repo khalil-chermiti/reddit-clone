@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import {ReactComponent as Downvote} from '../assets/downvote.svg'
-import {ReactComponent as Upvote} from '../assets/upvote.svg'
-import {ReactComponent as Comments} from '../assets/comments.svg'
+import {ReactComponent as Downvote} from '../../assets/downvote.svg'
+import {ReactComponent as Upvote} from '../../assets/upvote.svg'
+import {ReactComponent as Comments} from '../../assets/comments.svg'
 
 //post container
 const Wrapper = styled.div`

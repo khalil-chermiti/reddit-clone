@@ -31,6 +31,7 @@ input {
 svg{
   width:50px;
   padding:.4em;
+  cursor:pointer;
 }
 
 `
@@ -45,7 +46,9 @@ const Navbar = () => {
 
   return (
     <Wrapper>
-       <RedditLogo/>
+       <RedditLogo onClick={()=>{
+         navigate('/')
+       }}/>
        <input type="text" placeholder="Reddit Search..." />
        <div>
 
