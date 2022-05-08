@@ -18,7 +18,7 @@ app.use('/api/v1/posts',postsRouter)
 import connectDB from './db/connect.js';
 const start = async () => {
     try {
-      await connectDB(process.env.MONGO_URI)
+      await connectDB(process.env.MONGO_URI) 
       app.listen(PORT, () => {
         console.log(`Server is listening on PORT ${PORT}...`)
       })

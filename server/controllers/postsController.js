@@ -13,6 +13,7 @@ const getAllPosts = async(req,res)=>{
     }
 }
 const createPost = async(req,res)=>{
+    console.log(req.body)
     try {
         const post = await Posts.create(req.body);
         res.status(StatusCodes.CREATED).json({post});
@@ -20,17 +21,17 @@ const createPost = async(req,res)=>{
             throw new BadRequestError("please provide all required fields")
         }
     } catch (error) {
-        throw new BadRequestError("couldn't create post :(");
-
+        //throw new BadRequestError("couldn't create post :(");
+        console.log(error)
     }
 }
-const updatePost = async (req,res)=>{
+const updatePost = async (req,res)=>{ 
     const { id:postId } = req.params;
 
     const post = await Posts.findOne({"_id":postId});
     if(!post){
         throw new BadRequestError(`No such post with id ${postId}`);
-    }
+    } 
     checkPermissions(req.user,post.createdBy);
     const updatedPost = await Job.findOneAndUpdate({ _id: postId }, req.body, {
         new: true,
