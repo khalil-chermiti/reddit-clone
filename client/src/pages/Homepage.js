@@ -23,7 +23,7 @@ const HomePage = () => {
     return <Wrapper>
         <CreatePost/>
         {/* {user ? `hello ${user.name}`  : "hello visiter"} */}
-        {posts.length ? posts.map(post => <Post {...post} />) : "no posts yet"}
+        {posts.length ? posts.map((post) => <Post key={post._id} {...post} />) : "no posts yet"}
     </Wrapper>;   
 };
 
