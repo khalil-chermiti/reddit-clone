@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import styled from "styled-components";
 
 import {
@@ -11,19 +10,21 @@ import {
     Heading,
     Text ,
 } from "@chakra-ui/react";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ContainerWithBoxShadow = styled(Container)`
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 `
 
-const SignIn = () => {
+const Register = () => {
     const [userCredentials, setUserCredentials] = useState({
+        userName:"",
         email: "",
         password: "",
+
     });
 
-    const navigate = useNavigate();    
+    const navigate = useNavigate();
 
     const handleChange = e => {
         const name = e.target.name;
@@ -33,7 +34,18 @@ const SignIn = () => {
 
     return (
         <ContainerWithBoxShadow width="md" mt="3rem" p='10' rounded='md' bg='white' >
-            <Heading fontSize={40}>sing in</Heading>
+            <Heading fontSize={40}>sing Up</Heading>
+
+            <FormControl isRequired mt="50">
+                <FormLabel htmlFor="userName">User Name : </FormLabel>
+                <Input
+                    id="userName"
+                    borderColor="lightblue"
+                    name="userName"
+                    type="userName"
+                    onChange={handleChange}
+                />
+            </FormControl>
 
             <FormControl isRequired mt="50">
                 <FormLabel htmlFor="email">Email address : </FormLabel>
@@ -57,18 +69,17 @@ const SignIn = () => {
                 />
             </FormControl>
             <Container>
-                <Text mt="2rem" textAlign='center'> Not a reddittor ? {' '}
-                    <span style={{color:'#3d9d9b', cursor:'pointer'}}
-                     onClick={()=>navigate('/register')}>
-                        Create account
+                <Text mt="2rem" textAlign='center'> Already a redditor ? {' '}
+                    <span style={{color:'#3D9D9B',cursor:'pointer'}} onClick={()=>navigate('/signin')}>
+                        Log In
                     </span>
                 </Text>
             </Container>
             <Button type="submit" mt="10" color="white" bg="redditOrange.300" _hover={{bg: "redditOrange.100"}}>
-                login
+                Sign Up
             </Button>
         </ContainerWithBoxShadow>
     );
 };
 
-export default SignIn;
+export default Register;

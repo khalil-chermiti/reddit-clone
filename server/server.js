@@ -6,7 +6,7 @@ import dotenv from 'dotenv'
 dotenv.config();
 const  PORT = process.env.PORT || 5000;
 
-app.use(cors({origin : "http://localhost:3000"}));
+app.use(cors({origin :"*", methods : ["PATCH" , "PUT" , "POST" , "GET"] }));
 app.use(express.json());
 
 //routers

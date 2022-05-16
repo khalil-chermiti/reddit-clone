@@ -27,6 +27,11 @@ const postSchema = new mongoose.Schema({
     content:{
         type:String,
     },
+    voters:{
+        type:Array,
+        default:[],
+
+    },
     comments:{
         type:Array,
         default:[],

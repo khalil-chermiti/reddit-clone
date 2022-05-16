@@ -61,7 +61,7 @@ const CreatePostIndex = () => {
         <select onChange={(e) => {
           setCommunity(e.target.value)
         } }>
-          <option disabled selected>select the community</option>
+          <option disabled default selected>select the community</option>
           <option>r/Community</option>
           <option>r/Spotify</option>
         </select>

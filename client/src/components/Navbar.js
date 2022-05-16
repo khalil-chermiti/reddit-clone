@@ -53,7 +53,7 @@ const Navbar = () => {
        <div>
 
        <LightButton onClick={handleClick}>Log In</LightButton>
-       <Button>Sign Up</Button> 
+       <Button onClick={()=>navigate('/register')}>Sign Up</Button> 
        </div>
       
     </Wrapper>
