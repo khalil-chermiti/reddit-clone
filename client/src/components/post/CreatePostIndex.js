@@ -1,13 +1,13 @@
 import React,{useState} from 'react'
 import { Button } from '../Button'
 import styled from 'styled-components'
-import { addPost } from '../../redux/posts/postsSlice'
-import {useDispatch} from 'react-redux'
-
+import { addPost, selectShowAlert } from '../../redux/posts/postsSlice'
+import {useDispatch, useSelector} from 'react-redux'
+import Alert from '../Alert'
 const Wrapper = styled.div`
     width:50%;
+    
     margin:50px auto;
-    width:90vw;
     text-align:left;
     h3{
       border-bottom: 1px solid white;
@@ -52,31 +52,36 @@ const CreatePostIndex = () => {
   const [content,setContent] = useState('');
   const [title,setTitle] = useState('');
   const [community,setCommunity] = useState('');
-
+  const showAlert = useSelector(selectShowAlert);
+  
+  
   return (
-    <Wrapper>
+    <><Wrapper>
         <h3>Create a post</h3>
-        <select onChange={(e)=>{
+        <select onChange={(e) => {
           setCommunity(e.target.value)
-        }}>
-          <option>r/Community</option> 
+        } }>
+          <option disabled default selected>select the community</option>
+          <option>r/Community</option>
           <option>r/Spotify</option>
         </select>
         <PostContainer>
-          <input type='text' placeholder='Title' max={300}
-          onChange={(e)=>{
-          setTitle(e.target.value)
-        }}/>
-          <textarea onChange={(e)=>{
-          setContent(e.target.value)
-        }}/>
+          {showAlert && <Alert />}
+          <input type='text' placeholder='Title'
+            onChange={(e) => {
+              setTitle(e.target.value)
+            } } />
+          <textarea onChange={(e) => {
+            setContent(e.target.value)
+          } } />
           <Button type='submit'
-          onClick={()=>{
-            dispatch(addPost({title,content,community}))
-          }}>Post</Button>
+            onClick={() => {
+              dispatch(addPost({ title, content, community }))
+            } }>Post</Button>
         </PostContainer>
-    </Wrapper>
-  )
-}
+      </Wrapper>
+      </>)
+  }
+
 
 export default CreatePostIndex 

@@ -7,6 +7,7 @@ import { userSignIn } from './redux/user/userSlice';
 import { getPosts } from './redux/posts/postsSlice';
 
 import HomePage from './pages/Homepage';
+import Register from './pages/Register';
 import SignIn from './components/SignIn';
 
 import './App.css';
@@ -28,6 +29,7 @@ function App() {
         <Route path='/' element={<HomePage/>}/>
         <Route path='/signin' element={<SignIn/>}/>
         <Route path='/posts/create' element={<CreatePostIndex/>}/>
+        <Route path='/register' element={<Register/>}/>
       </Routes>
     </div>
   );

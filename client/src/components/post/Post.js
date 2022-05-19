@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import {ReactComponent as Downvote} from '../../assets/downvote.svg'
 import {ReactComponent as Upvote} from '../../assets/upvote.svg'
 import {ReactComponent as Comments} from '../../assets/comments.svg'
+import { useDispatch } from 'react-redux'
+import { upvote,downvote} from '../../redux/posts/postsSlice'
 
 //post container
 const Wrapper = styled.div`
@@ -68,13 +70,18 @@ const Comment = styled(Button)`
 
 //post component
 const Post = (props) => {
-    const {upvotes,downvotes,title,community,comments,createdBy,content} = props;
+    const {upvotes,downvotes,title,community,comments,createdBy,content , _id } = props;
+    const dispatch = useDispatch();
   return (
     <Wrapper>
         <Votes>
-            <Button><Upvote /></Button>
+            <Button onClick={()=>{
+                dispatch(upvote({type : "upvote" , userName : createdBy , id : _id}))
+            }}><Upvote /></Button>
                 <span>{upvotes - downvotes}</span>
-            <Button><Downvote/></Button>
+            <Button onClick={()=>{
+                dispatch(downvote({type:"downvote",userName:createdBy,id:_id}))
+            }}><Downvote/></Button>
         </Votes>
         <Content>
             {/* // TODO: fetch community and the user from the API

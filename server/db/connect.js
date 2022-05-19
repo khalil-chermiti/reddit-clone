@@ -6,4 +6,4 @@ const connectDB = async(uri)=>{
 mongoose.connection.once('open' , () => console.log('connected to the database...'));
 mongoose.connection.once('error' , () => console.error('error connecting to the DB!')) ;
 
-export default connectDB;
+export default connectDB; 
