@@ -1,34 +1,34 @@
-import express from "express";
 import cookieParser from "cookie-parser";
-import cors from "cors";
+import express from "express";
 import morgan from "morgan";
-const app = express();
+import cors from "cors";
+import "dotenv/config";
 
-import dotenv from "dotenv";
-dotenv.config();
-const PORT = process.env.PORT || 5000;
-
-app.use(cors({origin :"*", methods : ["PATCH" , "PUT" , "POST" , "GET"] }));
-app.use(morgan("tiny"));
-app.use(cookieParser());
-
-app.use(express.json());
-
-//routers
 import postsRouter from "./routes/postsRoutes.js";
 import authRouter from "./routes/authRoutes.js";
 import userRouter from "./routes/userRoutes.js";
+import connectDB from "./db/connect.js";
+
+const app = express();
+
+const PORT = process.env.PORT || 5000;
+
+app.use(cors({ origin: "*", methods: ["PATCH", "PUT", "POST", "GET"] }));
+app.use(morgan("dev"));
+app.use(cookieParser());
+app.use(express.json());
+
+// routes
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/posts", postsRouter);
 app.use("/api/v1/user", userRouter);
 
-import connectDB from "./db/connect.js";
 const start = async () => {
   try {
-    await connectDB("mongodb://localhost:27017/myapp");
-    app.listen(PORT, () => {
-      console.log(`Server is listening on PORT ${PORT}...`);
-    });
+    await connectDB();
+    app.listen(PORT, () =>
+      console.log(`Server is listening on PORT ${PORT}...`)
+    );
   } catch (error) {
     console.log(error);
   }

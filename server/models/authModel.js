@@ -19,3 +19,7 @@ export async function emailExists(email) {
 export async function searchByUsername(username) {
   return await User.findOne({ username: username }, { __v: 0 });
 }
+
+export async function findUserByJWT(jwt) {
+  return await User.findOne({ refreshToken: jwt }, { __v: 0 });
+}
