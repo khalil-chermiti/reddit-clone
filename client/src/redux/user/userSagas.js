@@ -1,31 +1,33 @@
-import {all , put , call , takeLatest} from 'redux-saga/effects' ;
+import { all, put, call, takeLatest } from "redux-saga/effects";
+import { axiosLogin } from "../../api/axios";
 
-import {userSignInSuccess , userSignInError} from './userSlice';
+import { userSignInSuccess, userSignInError } from "./userSlice";
 
-function* userSignIn({payload}) {
-    try {
-        const data = yield call(()=> fetch("https://jsonplaceholder.typicode.com/users/1/"));
-        const user = yield data.json() ;
-        yield put(userSignInSuccess(user));
-    } catch(err) {
-        yield put(userSignInError(err.message));
-    }
-}
-
-
-// listens to user signin actions 
-function* onUserSignIn() {
-    yield takeLatest('user/userSignIn' , userSignIn);
-};
-
-// TODO : onUserSignUp 
-// TODO : onUserSignIn 
+// TODO : onUserSignUp
 // TODO : onUserSignOut
 
+// sign in user
+function* userSignIn({ payload }) {
+  const { username, password } = payload;
 
-// calls all user's sagas 
-export default function* userSagas () {
-    yield all([
-        call(onUserSignIn),
-    ]) ;
-};
+  try {
+    const {
+      data: { jwt },
+    } = yield call(axiosLogin, { username, password });
+    yield put(userSignInSuccess(jwt));
+  } catch (err) {
+    err.response?.data
+      ? yield put(userSignInError(err.response?.data))
+      : yield put(userSignInError(err.message));
+  }
+}
+
+// user watcher
+function* onUserSignIn() {
+  yield takeLatest("user/userSignIn", userSignIn);
+}
+
+// calls all user's sagas
+export default function* userSagas() {
+  yield all([call(onUserSignIn)]);
+}

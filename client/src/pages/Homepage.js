@@ -1,30 +1,38 @@
-import React from "react";
-import styled from 'styled-components'
-import { useSelector } from "react-redux";
-import { selectCurrentUser } from "../redux/user/userSlice";
+import React, { useEffect } from "react";
+import styled from "styled-components";
+import Post from "../components/post/Post";
+import CreatePost from "../components/post/CreatePost";
+
 import { selectPosts } from "../redux/posts/postsSlice";
-import CreatePost from '../components/post/CreatePost'
-import Post from '../components/post/Post'
+import { useSelector, useDispatch } from "react-redux";
+import { getPosts } from "../redux/posts/postsSlice";
 
 const Wrapper = styled.div`
-    width:45%;
-    margin:auto;
-    
-    height:100%;
-    display:flex;
-    flex-direction:column;
+  width: 45%;
+  margin: auto;
 
-
-`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`;
 
 const HomePage = () => {
-    const user = useSelector(selectCurrentUser);
-    const posts = useSelector(selectPosts);
-    return <Wrapper>
-        <CreatePost/>
-        {/* {user ? `hello ${user.name}`  : "hello visiter"} */}
-        {posts.length ? posts.map((post) => <Post key={post._id} {...post} />) : "no posts yet"}
-    </Wrapper>;   
+  const posts = useSelector(selectPosts);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
+
+  return (
+    <Wrapper>
+      <CreatePost />
+      {/* {user ? `hello ${user.name}`  : "hello visiter"} */}
+      {posts.length
+        ? posts.map(post => <Post key={post._id} {...post} />)
+        : "no posts yet"}
+    </Wrapper>
+  );
 };
 
 export default HomePage;
