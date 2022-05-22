@@ -4,6 +4,7 @@ import morgan from "morgan";
 import cors from "cors";
 import "dotenv/config";
 
+import { credentials, corsOptions } from "./utils/corsConfig.js";
 import postsRouter from "./routes/postsRoutes.js";
 import authRouter from "./routes/authRoutes.js";
 import userRouter from "./routes/userRoutes.js";
@@ -13,7 +14,9 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 
-app.use(cors({ origin: "*", methods: ["PATCH", "PUT", "POST", "GET"] }));
+// allow access credentials before CORS check
+app.use(credentials);
+app.use(cors(corsOptions));
 app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(express.json());
@@ -22,6 +25,12 @@ app.use(express.json());
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/posts", postsRouter);
 app.use("/api/v1/user", userRouter);
+
+// handles any errors
+app.use((err, req, res, next) => {
+  console.log(err.stack);
+  res.status(400).json({ error: "bad request" });
+});
 
 const start = async () => {
   try {

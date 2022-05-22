@@ -70,15 +70,15 @@ function verify(password, hash) {
 
 export async function loginUser(req, res) {
   const user = req.body;
-
+  
   if (!user || !user.username || !user.password)
     return res.status(400).json({ error: "missing info" });
 
   // get user from db
   const dbUser = await searchByUsername(user.username);
-
+  
   // check password
-  if (!verify(user.password, dbUser.password))
+  if (!verify(user.password, dbUser?.password))
     return res.status(403).json({ error: "wrong username or password" });
 
   // sign jwt
